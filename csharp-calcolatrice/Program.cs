@@ -1,12 +1,40 @@
-﻿namespace csharp_calcolatrice
+﻿using static System.Console;
+namespace csharp_calcolatrice
 {
-    internal class Program
+    
+    internal partial class Program
     {
         static void Main(string[] args)
         {
+            var test1 = CalcoliHelper.Sum(8,7.5);
+            WriteLine(test1);
+
+            var test2 = CalcoliHelper.Sub(8,7.5);
+            WriteLine(test2);
+
+            var test3 = CalcoliHelper.Mult(8,7.5);
+            WriteLine(test3);
+
+            var test4 = CalcoliHelper.Absolute(-7.5);
+            WriteLine(test4);
+            var test5 = CalcoliHelper.Absolute(-45);
+            WriteLine(test5);
+            WriteLine();
+            var test6 = CalcoliHelper.Max(-34.5,54);
+            WriteLine(test6);
+            WriteLine();
+            var test7 = CalcoliHelper.Min(-34.5,54);
+            WriteLine(test7);
+            WriteLine();
+            // Bonus
+            var test8 = CalcoliHelper.Elevate(0,0);
+            WriteLine(test8);
+
+
+
+            ReadKey();
+            
             
         }
-
-        // Creare una classe di helper CalcoliHelper
     }
 }
