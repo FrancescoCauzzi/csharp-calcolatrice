@@ -29,6 +29,10 @@ namespace csharp_calcolatrice
             // Bonus
             var test8 = CalcoliHelper.Elevate(0,0);
             WriteLine(test8);
+            WriteLine();
+            // Super Bonus
+            var test9 = CalcoliHelper.SumGenerics<int>(21, 22);
+            WriteLine(test9);
 
 
 

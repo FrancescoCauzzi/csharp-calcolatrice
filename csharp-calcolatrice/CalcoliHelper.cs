@@ -63,7 +63,19 @@
                 return (int)Math.Pow(x,y);
             }
 
-            
+            // SUPER BONUS 110%
+            // con l'uso dei generics si può risparmiare linee di codice ed implementare un metodo che prenda come parametri due tipi di dato diversi e ritorni il valore della somma, nonostante bisogna tener conto di alcuni accorgimenti sulle operazioni ammesse con i Generics.
+            public static T SumGenerics<T>(T x, T y) where T : IConvertible
+            {
+                // Convert T to double, perform addition, and then convert back to T
+                double dx = Convert.ToDouble(x);
+                double dy = Convert.ToDouble(y);
+                double result = dx + dy;
+                return (T)Convert.ChangeType(result, typeof(T));
+            }
+
+
+
         }
     }
 }
