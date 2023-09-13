@@ -33,6 +33,7 @@
 
             public static int MultRecursive(int x, int y)
             {
+                // to fix here, the case where y < 0 needs to be handled
                 if (y == 0 || x == 0)
                 {
                     return 0;
