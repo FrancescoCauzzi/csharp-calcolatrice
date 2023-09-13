@@ -30,6 +30,18 @@
             {
                 return x * y;
             }
+
+            public static int MultRecursive(int x, int y)
+            {
+                if (y == 0 || x == 0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return x + MultRecursive(x, y - 1);
+                }
+            }
             //Moltiplicazione di due numeri double
             public static double Mult(double x, double y)
             {
@@ -93,14 +105,36 @@
                 return (int)Math.Pow(x, y);
             }
 
-            public static int ElevateNoMath(int x, int y)
+            public static double ElevateNoMath(double x, double y)
             {
-                int result = 1;
-                for (int i = 0; i < y; i++)
+                if (y >= 0)
                 {
-                    result *= x;
+                    double result = 1;
+                    for (int i = 0; i < y; i++)
+                    {
+                        result *= x;
+                    }
+                    return result;
                 }
-                return result;
+                else
+                {
+                    return 1 / ElevateNoMath(x, Math.Abs(y));
+                }
+            }
+
+            public static double ElevateRecursive(double x, double y)
+            {
+                if (y >= 0)
+                {
+                    if (y == 0)
+                        return 1;
+                    else
+                        return x * ElevateRecursive(x, y - 1);
+                }
+                else
+                {
+                    return 1 / ElevateRecursive(x, Math.Abs(y));
+                }
             }
             // SUPER BONUS 110%
             // con l'uso dei generics si può risparmiare linee di codice ed implementare un metodo che prenda come parametri due tipi di dato diversi e ritorni il valore della somma, nonostante bisogna tener conto di alcuni accorgimenti sulle operazioni ammesse con i Generics.
