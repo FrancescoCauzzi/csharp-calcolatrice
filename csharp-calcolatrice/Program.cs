@@ -19,7 +19,7 @@ namespace csharp_calcolatrice
             var test3 = CalcoliHelper.Mult(8, 7.5);
             WriteLine(test3);
 
-            var test12 = CalcoliHelper.MultRecursive(3, 4);
+            var test12 = CalcoliHelper.MultRecursive(-3, 4);
             WriteLine($"test12: {test12}");
 
             var test4 = CalcoliHelper.Absolute(-7.5);

@@ -31,17 +31,45 @@
                 return x * y;
             }
 
+            /*
             public static int MultRecursive(int x, int y)
             {
-                // to fix here, the case where y < 0 needs to be handled
+                // here I use an XOR operator to check if the sign of the numbers is different
+                if (y < 0 ^ x < 0)
+                {
+                    return -MultRecursive(Math.Abs(x), Math.Abs(y));
+                }
+                else
+                {
+                    if (y == 0 || x == 0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return x + MultRecursive(Math.Abs(x), Math.Abs(y - 1));
+                    }
+                }
+            }
+            */
+
+            public static int MultRecursive(int x, int y)
+            {
+                // Base case: if either number is zero, the product is zero
                 if (y == 0 || x == 0)
                 {
                     return 0;
                 }
-                else
+
+                // If y is negative, flip the sign of both x and y
+                if (y < 0)
                 {
-                    return x + MultRecursive(x, y - 1);
+                    x = -x;
+                    y = -y;
                 }
+
+                // Recursive case
+                return x + MultRecursive(x, y - 1);
             }
             //Moltiplicazione di due numeri double
             public static double Mult(double x, double y)
@@ -137,8 +165,31 @@
                     return 1 / ElevateRecursive(x, Math.Abs(y));
                 }
             }
+
+            // optimisation of the above recursive function to improve performance by reducing the number of recursive calls (got it from the internet)
+            public static double ElevateRecursive2(double x, double y)
+            {
+                if (y == 0)
+                {
+                    return 1;
+                }
+                if (y < 0)
+                {
+                    x = 1 / x;
+                    y = -y;
+                }
+                if (y % 2 == 0)
+                {
+                    double half = ElevateRecursive(x, y / 2);
+                    return half * half;
+                }
+                else
+                {
+                    return x * ElevateRecursive(x, y - 1);
+                }
+            }
             // SUPER BONUS 110%
-            // con l'uso dei generics si può risparmiare linee di codice ed implementare un metodo che prenda come parametri due tipi di dato diversi e ritorni il valore della somma, nonostante bisogna tener conto di alcuni accorgimenti sulle operazioni ammesse con i Generics.
+            // con l'uso dei generics si può risparmiare linee di codice ed implementare un metodo che prenda come parametri due tipi di dato diversi e ritorni il valore della somma, nonostante questo bisogna tener conto di alcuni accorgimenti sulle operazioni ammesse con i Generics.
             public static T SumGenerics<T>(T x, T y) where T : IConvertible
             {
                 // Convert T to double, perform addition, and then convert back to T
